@@ -1,16 +1,41 @@
 .home-container {
   position: relative;
+  height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.circle__btn {
+  width: 160px;
+  height: 160px;
+  border: none;
+  border-radius: 100%;
+  background-color: $dark;
+
+  transform: rotate(-30deg);
+
+  a {
+    color: $light;
+    font-size: 24px;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
 .circle__text {
   position: absolute;
-  font-size: 48px;
+  font-size: 64px;
   text-transform: uppercase;
+  animation: rotateText 20s linear infinite;
 
   span {
+    position: absolute;
+    top: -240px;
+    text-transform: uppercase;
     display: inline-block;
+    transform-origin: 0 240px;
   }
 }

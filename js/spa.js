@@ -1,64 +1,58 @@
-// Single page Application
-const app = {
+// Single page spalication
+const spa = {
     pages: [],
     // Custom "show" event
-    show: new Event('show'),
+    showPage: new Event('showPage'),
 
     init: function() {
-        app.pages = document.querySelectorAll('.page'); // Get all pages
-        app.pages.forEach((pg) => {
-            pg.addEventListener('show', app.pageShown); // listen for the custom "show" event on each page
+        spa.pages = document.querySelectorAll('.page'); // Get all pages
+        spa.pages.forEach((page) => {
+            page.addEventListener('showPage', spa.pageShown); // show Page eventListener for pages
         });
         // Get all navigation links
         document.querySelectorAll('.nav__link').forEach((link) => {
-            link.addEventListener('click', app.nav); // Listen for a click event on each link
+            link.addEventListener('click', spa.nav); // click eventListener on links
         });
-        // Initial default url
-        // So if I reload the page it will revert the page it was on
         if (location.hash === "#home") {
-            history.replaceState({}, '', '#home');
+            history.replaceState({}, '', '#home'); // if reloading page it stays on the same page
             document.querySelector('.nav__link.active').classList.remove('active'); // remove active class from link
             document.querySelector('.page.active').classList.remove('active'); // remove active class from page
-            document.querySelector('.nav__link[data-target="home"]').classList.add('active'); // Add active class to link with data-target="home"
+            document.querySelector('.nav__link[data-target="home"]').classList.add('active'); // Add active class to data-target="home" link
             document.getElementById('home').classList.add('active'); // Add active class to page #home
         } else if (location.hash === "#notes") {
             history.replaceState({}, '', '#notes');
             document.querySelector('.nav__link.active').classList.remove('active'); // remove active class from link
             document.querySelector('.active').classList.remove('active'); // remove active class from page
-            document.querySelector('.nav__link[data-target="notes"]').classList.add('active'); // Add active class to link with data-target="notes"
+            document.querySelector('.nav__link[data-target="notes"]').classList.add('active'); // Add active class to data-target='notes link
             document.getElementById('notes').classList.add('active'); // Add active class to page #notes
         } 
-        window.addEventListener('popstate', app.popIn);
+        window.addEventListener('popstate', spa.popIn);
     },
 
-    nav: function(ev) {
-        ev.preventDefault(); // Prevent default behaviour on link click
+    nav: function(event) {
+        event.preventDefault(); // Prevent default click function
 
-        let currentPage = ev.target.getAttribute('data-target');// Create a current page variable that will be the data-target value of the clicked navigation element
+        let thisPage = event.target.getAttribute('data-target'); // the shown page with same id == data-link
        
-        document.querySelector('.page.active').classList.remove('active'); // Remove .active class of any nav element
-        document.getElementById(currentPage).classList.add('active'); // Get clicked nav element and add an .active class to the corresponding page element
-        document.querySelector('.nav__link.active').classList.remove('active'); // remove active class from link if it has active class
-        document.querySelector(`.nav__link[data-target="${currentPage}"]`).classList.add('active'); // Add class active to link with correspondinig data-target value.
+        document.querySelector('.page.active').classList.remove('active'); // Remove active class of nav__link
+        document.getElementById(thisPage).classList.add('active'); // Add active class to targeted element
+        document.querySelector('.nav__link.active').classList.remove('active'); // remove active class of nav element
+        document.querySelector(`.nav__link[data-target="${thisPage}"]`).classList.add('active'); // add active class to the data-link
 
-        // Add hash 
-        history.pushState({}, currentPage, `#${currentPage}`); // 
-        document.getElementById(currentPage).dispatchEvent(app.show); // Gets the id that corresponds to data-target value of the nav item clicked and shows the corresponding page
+        history.pushState({}, thisPage, `#${thisPage}`); // 
+        document.getElementById(thisPage).dispatchEvent(spa.showPage); // Get the targeted page
     },
 
-    pageShown: function(ev) {
-        console.log('Page:', ev.target.id); // logs the page that was targeted and is being shown
-        // Get title of page to be shown and add a class to h1 for 800ms and then remove that class (transition is in css)
-       
+    pageShown: function(event) { 
+        console.log('This page is:', event.target.id); 
     },
 
-    popIn: function(ev) {
-        console.log('Location.hash:', location.hash); // logs the hash of the page that is being loaded on prev or next in browser.
+    popIn: function() {
         let hash = location.hash.replace('#', ''); // variable hash is the location hash minus #
         document.querySelector('.active').classList.remove('active'); // remove active class of page
         document.getElementById(hash).classList.add('active'); // Finds the id of the page that corresponds to the location hash and adds the active class to the page
-        document.getElementById(hash).dispatchEvent(app.show); //  Finds the id of the page that corresponds to the location hash and shows the corresponding page
+        document.getElementById(hash).dispatchEvent(spa.show); //  Finds the id of the page that corresponds to the location hash and shows the corresponding page
     }
 }
 
-document.addEventListener('DOMContentLoaded', app.init);
+document.addEventListener('DOMContentLoaded', spa.init);

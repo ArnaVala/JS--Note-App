@@ -1,9 +1,5 @@
-// CIRCULAR TEXT ANIMATION
-// SPLIT TEXT INTO LETTERS
-const circleText = document.querySelector('.circle__text');
-circleText.innerHTML = circleText.textContent.replace(/\S/g, "<span>$&</span>");
+import NotesPage from "./NotesPage.js";
 
-const element = document.querySelectorAll('span');
-for (let i = 0; i < element.length; i++){
-  element[i].style.transform="rotate("+i+"deg)"
-}
+const root = document.getElementById('notes');
+let notesPage = new NotesPage(root)
+

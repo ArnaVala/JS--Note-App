@@ -9,3 +9,12 @@
     background-position: 10% 0%;
   }
 }
+
+@keyframes rotateText {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
