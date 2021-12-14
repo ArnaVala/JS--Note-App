@@ -1,23 +1,20 @@
-# Take Note - note taking SPA in vanilla JS.
+# Take Note - note taking SPA in vanilla JS with CSS animations and tranformations.
 - Note that I am using this project for both the JS- Common Web API's in Module 3.
 and also the HTML&CSS- Animating and Transforming in Module 4.
 *Read the info on HTML&CSS further below.*
 
-## JavaScript in the Browser - Common Web API's
+
 
 [Live site](https://av-spa-notes-app.netlify.app/)
 
-## Requirements
-
-### SPA: a Single Page Application in Vanilla JavaScript.
-
+## JAVASCRIPT IN THE BROWSER - COMMON WEB API'S - module 3
 - 2 pages, all contents in the same index.html
 - Navigation between the pages using hash
 - Using _History API_ to push new state (new page) to the DOM and change the URL.
-- Storing data in the _localStorage_, and retrieving it on next visit.
+- Storing data in the _localStorage_, and retrieving it on next visit. 
+<br>
 
-## Project - A Note taking app
-
+### SPA: a Single Page Application in Vanilla JavaScript using historyAPI and localStorage
 - History API handles navigation between pages, code found in the js/spa.js file.
   You can navigate between home and my notes, without changing pages.
 - The project is built with js modules to handle the Note taking page.
@@ -26,7 +23,7 @@ and also the HTML&CSS- Animating and Transforming in Module 4.
 - The NotesAPI and NoteView are imported into the NotePage.js where the two are connected, so when we create or edit, it does so accordingly in the localStorageAPI.
 - The NotePage.js is then imported into the main.js which is attached to the index.html. There I specify the root element into which to inject the HTML.
 
-## HTML & CSS - ANIMATING AND TRANSFORMING
+## HTML & CSS - ANIMATING AND TRANSFORMING - module 4
 I decided to use the notes taking app for the animation with CSS project.
 ### Requirements:
 *2 animated elements on their own, or which do not require interaction:*
