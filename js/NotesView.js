@@ -6,6 +6,7 @@ export default class NotesView {
         this.onNoteEdit = onNoteEdit;
         this.onNoteDelete = onNoteDelete;
         this.root.innerHTML = `
+            
             <div class="notes__sidebar">
                 
                 <div class="notes__list"></div>
@@ -15,6 +16,7 @@ export default class NotesView {
                 <textarea class="notes__body">Take Note...</textarea>
                 <button class="notes__add" type="button">Add Note</button>
             </div>
+            
         `;
 
         const btnAddNote = this.root.querySelector(".notes__add");
@@ -94,6 +96,6 @@ export default class NotesView {
     }
 
     updateNotePreviewVisibility(visible) {
-        this.root.querySelector(".notes__preview").style.visibility = visible ? "visible" : "hidden";
+        this.root.querySelector(".notes__preview").style.visibility = visible ? "visible" : "";
     }
 }
