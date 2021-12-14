@@ -1,4 +1,7 @@
-# JavaScript - Web API's consumption
+# Take Note - note taking SPA in vanilla JS. 
+
+## JavaScript in the Browser - Common Web API's
+
 
 [Live site]()
 
