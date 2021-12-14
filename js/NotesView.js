@@ -8,7 +8,6 @@ export default class NotesView {
         this.root.innerHTML = `
             
             <div class="notes__sidebar">
-                
                 <div class="notes__list"></div>
             </div>
             <div class="notes__preview">
@@ -19,14 +18,17 @@ export default class NotesView {
             
         `;
 
+        // elements for the new note form
         const btnAddNote = this.root.querySelector(".notes__add");
         const inpTitle = this.root.querySelector(".notes__title");
         const inpBody = this.root.querySelector(".notes__body");
 
+        // event listener for button to add new note
         btnAddNote.addEventListener("click", () => {
             this.onNoteAdd();
         });
 
+        // updates value of input for title and body, on edit or create
         [inpTitle, inpBody].forEach(inputField => {
             inputField.addEventListener("blur", () => {
                 const updatedTitle = inpTitle.value.trim();
@@ -39,6 +41,7 @@ export default class NotesView {
         this.updateNotePreviewVisibility(false);
     }
 
+    // creates the edited or created note with the time it was created or edited.
     _createListItemHTML(id, title, body, updated) {
         const MAX_BODY_LENGTH = 60;
 
@@ -56,6 +59,7 @@ export default class NotesView {
         `;
     }
 
+    // update the notes list accordingly, the newest note is injected in front of the list
     updateNoteList(notes) {
         const notesListContainer = this.root.querySelector(".notes__list");
 
@@ -84,6 +88,7 @@ export default class NotesView {
         });
     }
 
+    // update the current note
     updateActiveNote(note) {
         this.root.querySelector(".notes__title").value = note.title;
         this.root.querySelector(".notes__body").value = note.body;
