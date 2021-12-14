@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: "Space Grotesk", sans-serif;
+  background-color: #fff;
+  color: #000;
+  font-size: 1rem;
+}
+
+/* TYPOGRAPHY */
+h1 {
+  font-size: 64px;
+}
+
+h2 {
+  font-size: calc(8vw);
+}
+
+@keyframes GradientAni {
+  0% {
+    background-position: 10% 0%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 10% 0%;
+  }
+}
+.site-container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 2px;
+  background-color: #000;
+  grid-template-areas: "header header" "content content" "footer footer";
+}
+.site-container header {
+  grid-area: header;
+}
+.site-container main {
+  grid-area: content;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr;
+  background: linear-gradient(150deg, #7b68ee, #fff, #00ffea);
+  background-size: 200% 200%;
+  animation: GradientAni 10s ease infinite;
+}
+.site-container footer {
+  grid-area: footer;
+}
+
+.page {
+  display: none;
+  padding: 2rem;
+  height: 100%;
+  overflow: scroll;
+}
+.page.active {
+  display: block;
+}
+.page .grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-auto-rows: 1fr;
+  grid-auto-flow: dense;
+  grid-gap: 32px;
+}
+
+/* components */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: none;
+}
+.header .nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+.header .nav .nav__link {
+  z-index: 100;
+  display: block;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+.header .nav .nav__link.active {
+  color: #7b68ee;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: #7b68ee;
+  color: #000;
+}
+.footer p {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.footer p a {
+  text-decoration: none;
+  font-weight: normal;
+  color: #000;
+  border-bottom: 1px solid #000;
+}
+
+.home-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle__text {
+  position: absolute;
+  font-size: 48px;
+  text-transform: uppercase;
+}
+.circle__text span {
+  display: inline-block;
+}
+
+/* SITE LAYOUT */
+/* PAGE CONTENT */
+
+/*# sourceMappingURL=style.css.map */

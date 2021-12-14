@@ -1,0 +1,16 @@
+.home-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle__text {
+  position: absolute;
+  font-size: 48px;
+  text-transform: uppercase;
+
+  span {
+    display: inline-block;
+  }
+}

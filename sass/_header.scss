@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: none;
+
+  .nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+
+    .nav__link {
+      z-index: 100;
+      display: block;
+      text-decoration: none;
+      font-size: $links;
+      color: $light;
+      font-weight: bold;
+      cursor: pointer;
+
+      &.active {
+        color: $color;
+      }
+    }
+  }
+}
